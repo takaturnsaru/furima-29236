@@ -1,24 +1,57 @@
-# README
+## users_テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column               |Type       |  Options        |
+|---------------------|-----------|-----------------|
+|nickname             |string     | null:false      |
+|email                |string     | null:false      |
+|password             |string     | null:false      |
+|password_contirmation|string     | null:false      |
+|family_name          |string     | null:false      |
+|first_name           |string     | null:false      |
+|family_name_reading  |string     | null:false      |
+|first_name_reading   |string     | null:false      |
+|birth_year           |integer    | null:false      |
+|month_of_birth       |integer    | null:false      |
+|date_of_month        |integer    | null:false      |
 
-Things you may want to cover:
+## Association
 
-* Ruby version
+-has_many :items
+-has_many :commemts
 
-* System dependencies
+## items_テーブル
 
-* Configuration
+|Column               |Type           | Options                      |
+|---------------------|---------------|------------------------------|
+|image                |string         | null:false                   |
+|name                 |string         | null:false                   |
+|explanation          |text           | null:false                   |
+|category             |integer        | null:false                   |
+|status               |integer        | null:false                   |
+|shipping_fee         |integer        | null:false                   |
+|shipping_area        |integer        | null:false                   |
+|day_until_shipping   |integer        | null:false                   |
+|price                |integer
+|user_id              |references     | null:false,foregin_key: true |
 
-* Database creation
+## Association
 
-* Database initialization
+-belongs_to :user
+-has_many :comments
 
-* How to run the test suite
+## comments_テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column                |Type          |Options                         |
+|----------------------|--------------|--------------------------------|
+|comment               |string        |                                |
+|user                  |references    | null: false, foregin_key: true |
+|item                  |references    | null: false, foregin_key: true |
 
-* Deployment instructions
+## Association
 
-* ...
+-belongs_to :user
+-belongs_to :item
+
+
+
+
