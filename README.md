@@ -10,9 +10,7 @@
 |first_name           |string     | null:false      |
 |family_name_reading  |string     | null:false      |
 |first_name_reading   |string     | null:false      |
-|birth_year           |integer    | null:false      |
-|month_of_birth       |integer    | null:false      |
-|date_of_month        |integer    | null:false      |
+|birthday             |date       | null:false      |
 
 ## Association
 
@@ -23,7 +21,6 @@
 
 |Column               |Type           | Options                      |
 |---------------------|---------------|------------------------------|
-|image                |string         | null:false                   |
 |name                 |string         | null:false                   |
 |explanation          |text           | null:false                   |
 |category             |integer        | null:false                   |
@@ -31,8 +28,8 @@
 |shipping_fee         |integer        | null:false                   |
 |shipping_area        |integer        | null:false                   |
 |day_until_shipping   |integer        | null:false                   |
-|price                |integer
-|user_id              |references     | null:false,foregin_key: true |
+|price                |integer        | null:false                   |
+|user                 |references     | null:false,foregin_key: true |
 
 ## Association
 
@@ -52,6 +49,11 @@
 -belongs_to :user
 -belongs_to :item
 
+## transaction_テーブル
+｜Column              |Type            |Options                         |
+｜--------------------|----------------|--------------------------------|
+|user                 |references      |null:false, foregin_key: true   |
+|item                 |references      |null:false, foregin_key: true   |
 
-
-
+-has_one :user
+-belongs_to :item
