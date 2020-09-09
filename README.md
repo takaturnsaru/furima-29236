@@ -15,9 +15,7 @@
 ## Association
 
 -has_many :items
--has_many :commemts
--has_many :items, through: :users_items
--has_one :address
+-has_many :buyers
 
 ## items_テーブル
 
@@ -36,44 +34,35 @@
 ## Association
 
 -belongs_to :user
--has_many :comments
--has_many :users, through: :users_items
+-has_one :buyer
 
-## comments_テーブル
 
-|Column                |Type          |Options                         |
-|----------------------|--------------|--------------------------------|
-|comment               |string        |                                |
-|user                  |references    | null: false, foregin_key: true |
-|item                  |references    | null: false, foregin_key: true |
-
-## Association
-
--belongs_to :user
--belongs_to :item
-
-## users_items_テーブル
+## buyers_テーブル
 ｜Column              |Type            |Options                         |
 ｜--------------------|----------------|--------------------------------|
 |user                 |references      |null:false, foregin_key: true   |
 |item                 |references      |null:false, foregin_key: true   |
+｜address             |references      |null:false, foregin_key:true    |
+
+## Association
 
 -belongs_to :user
 -belongs_to :item
 -has_one :address
 
 ## Address_テーブル
-|Column        | Type              |Options                     |
-|--------------|-------------------|----------------------------|
-|postal_code   | string            | null:false                 |
-|prefectures   | integer           | null:false                 |
-|city          | string            | null:false                 |
-|address       | string            | null:false                 |
-|building_name | string            | default:""                 |
-|phone_number  | string            | null:false                 |
-|user          | references        | null:false,foregin_key:true|
+|Column        | Type              |Options                      |
+|--------------|-------------------|-----------------------------|
+|postal_code   | string            | null:false                  |
+|prefectures   | integer           | null:false                  | 
+|city          | string            | null:false                  |
+|address       | string            | null:false                  |
+|building_name | string            | default:""                  |
+|phone_number  | string            | null:false                  |
+|buyer         |references         | null:false, foregin_key:true|
+
 
 ## Association
 
--belongs_to :user
--belongs_to :users_item
+-belongs_to :buyer
+
