@@ -42,7 +42,6 @@
 ｜--------------------|----------------|--------------------------------|
 |user                 |references      |null:false, foregin_key: true   |
 |item                 |references      |null:false, foregin_key: true   |
-｜address             |references      |null:false, foregin_key:true    |
 
 ## Association
 
