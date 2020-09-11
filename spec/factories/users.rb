@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     nickname              {Faker::Name.initials(number:2)}
-    email                 {Faker::Internet.free_email}
+    email                 {"amition.cha@gmail.com"}
     password              {Faker::Internet.password(min_length:6)}
     password_confirmation {password}
     family_name           {"田中"}
@@ -11,5 +11,5 @@ FactoryBot.define do
     birthday              {"1933/1/1"}
   end
 end
-1933_1_1
-1933-1-1
+#1933_1_1
+#1933-1-1
