@@ -126,11 +126,6 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe "ログイン" do
-    context "ログインがうまくいくとき"
-      it "emailとpasswordが登録情報と一致すればログインできる"
-  
 end
 
 
