@@ -22,12 +22,14 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
+
   end
 
  private
 
     def item_params
-      params.require(:item).permit(:name,:explanation,:category,:status,:shipping_fee,:shipping_area,:day_until_shipping,:price,:image).merge(user_id: current_user.id)
+      params.require(:item).permit(:name,:explanation,:category_id,:status_id,:shipping_fee_id,:shipping_area_id,:day_until_shipping_id,:price,:image).merge(user_id: current_user.id)
     end
 
     def move_to_login
