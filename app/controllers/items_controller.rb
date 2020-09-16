@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_login, except:[:index, :show]
-  before_action :set_item, only:[:edit, :show]
+  before_action :set_item, only:[:edit, :show, :destroy]
 
   def index
     @items = Item.all
@@ -33,9 +33,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    @item.destroy
+    if @item.valid?
+      redirect_to root_path
+    else
+      render :show
+    end
   end
   
 
