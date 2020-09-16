@@ -1,4 +1,5 @@
 class BuyersController < ApplicationController
+  before_action :move_to_root
   def index
     
   end
@@ -13,5 +14,11 @@ class BuyersController < ApplicationController
         render :new
       end
   end
+  private
 
+  def move_to_root
+    unless user_signed_in?
+      redirect_to root_path
+    end
+  end
 end
