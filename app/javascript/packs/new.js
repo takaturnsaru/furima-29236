@@ -1,4 +1,5 @@
-window.addEventListener("load", function(){
+document.addEventListener("turbolinks:load"
+,function tax(){
   const itemPrice = document.getElementById("item-price")
   itemPrice.addEventListener('input', function() {
     const price = document.getElementById("item-price").value;
@@ -10,3 +11,4 @@ window.addEventListener("load", function(){
     output.innerHTML = Math.floor(profit)
   })
   })
+window.addEventListener("load",tax);
