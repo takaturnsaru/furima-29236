@@ -1,24 +1,46 @@
 class BuyersController < ApplicationController
   before_action :move_to_root
   def index
-    
+    @item = Item.find(params[:item_id])
+    @buyer = BuyerAddress.new
   end
   
 
   def create
-    @address = Address.new(address_params)
-    @address.save
-      if @address.valid?
-        redirect item_path
-      else
-        render :new
-      end
+    @item = Item.find(params[:item_id])
+    @buyer = BuyerAddress.new(buyer_params)
+    binding.pry
+    if @buyer.valid?
+      pay_item
+      @buyer.save
+      redirect_to items_path
+    else
+      render :index
+    end
   end
+  
   private
 
   def move_to_root
-    unless user_signed_in?
-      redirect_to root_path
+    @item = Item.find(params[:item_id])
+    unless user_signed_in? && current_user.id != @item.user_id
+      redirect_to root_path 
     end
   end
+
+  def buyer_params
+    params.permit(:postal_code,:prefectures_id,:city,:address,:building_name,:phone_number,:token,).merge(user_id:current_user.id,item_id:params[:item_id])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: buyer_params[:token],
+      currency:"jpy"
+    )
+  end
 end
+# pay_itemメソッドの中で@item = Item.find(params[:id])を定義をする
+# @itemからpriceを抜き取る
+
