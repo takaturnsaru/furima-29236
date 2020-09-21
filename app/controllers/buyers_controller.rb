@@ -9,7 +9,6 @@ class BuyersController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @buyer = BuyerAddress.new(buyer_params)
-    binding.pry
     if @buyer.valid?
       pay_item
       @buyer.save
