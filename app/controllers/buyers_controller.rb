@@ -26,7 +26,7 @@ class BuyersController < ApplicationController
   
 
   def move_to_root
-    unless user_signed_in? && current_user.id != @item.user_id
+    unless user_signed_in? && current_user.id != @item.user_id && @item.buyer == nil
       redirect_to root_path 
     end
   end
@@ -44,6 +44,4 @@ class BuyersController < ApplicationController
     )
   end
 end
-# pay_itemメソッドの中で@item = Item.find(params[:id])を定義をする
-# @itemからpriceを抜き取る
 
