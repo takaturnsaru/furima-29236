@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe BuyerAddress, type: :model do
   before do
     @buyer = FactoryBot.build(:buyer_address)
+    number = "4242424242424242"
+    exp_month = "12"
+    exp_year = "24"
+    cvc = "123"
   end
   describe "購入機能" do
     it "全ての値が正しく入力されていれば登購入できる" do
