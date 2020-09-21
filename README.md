@@ -61,7 +61,7 @@
 |buyer         |references         | null:false, foregin_key:true|
 
 
-## Association
+## Association 
 
 -belongs_to :buyer
 
