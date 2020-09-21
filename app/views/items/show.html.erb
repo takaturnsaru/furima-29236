@@ -8,7 +8,7 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if @item.blank? %>
+      <% if @item.buyer!=nil %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
@@ -32,11 +32,13 @@
     <%= link_to '削除',item_path(@item.id), method: :delete, class:'item-destroy' %>
     <% end %>
 
-    <% unless user_signed_in? && current_user.id == @item.user_id %>
+    
+    <% unless user_signed_in? && current_user.id == @item.user_id || @item.buyer != nil%>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', item_buyers_path(@item),class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
+    
 
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
