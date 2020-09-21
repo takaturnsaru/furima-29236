@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-  before_action :item_data, only: [:index,:create,:move_to_root]
+  before_action :item_data, only: [:index,:create]
   before_action :move_to_root
   def index
     @buyer = BuyerAddress.new
