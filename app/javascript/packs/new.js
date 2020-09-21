@@ -1,4 +1,7 @@
+
 function tax(){
+
+
   const itemPrice = document.getElementById("item-price")
   itemPrice.addEventListener('input', function() {
     const price = document.getElementById("item-price").value;
@@ -9,5 +12,6 @@ function tax(){
     output = document.getElementById("profit")
     output.innerHTML = Math.floor(profit)
   })
+
   }
 window.addEventListener("load",tax);
