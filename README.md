@@ -38,10 +38,10 @@
 
 
 ## buyers_テーブル
-｜Column              |Type            |Options                         |
-｜--------------------|----------------|--------------------------------|
-|user                 |references      |null:false, foregin_key: true   |
-|item                 |references      |null:false, foregin_key: true   |
+|Column              |Type            |Options                         |
+|--------------------|----------------|--------------------------------|
+|user                |references      |null:false, foregin_key: true   |
+|item                |references      |null:false, foregin_key: true   |
 
 ## Association
 
